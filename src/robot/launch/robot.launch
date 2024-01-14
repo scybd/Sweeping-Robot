@@ -1,0 +1,17 @@
+<launch>
+    <param name="robot_description" command="$(find xacro)/xacro $(find robot)/urdf/car.xacro" />
+
+    <!-- 启动 gazebo -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find robot)/worlds/home.world" />
+    </include>
+
+    <!-- 在 gazebo 中显示机器人模型 -->
+    <node pkg="gazebo_ros" type="spawn_model" name="model" args="-urdf -model mycar -param robot_description" />
+
+    
+    <!-- <node pkg="rviz" type="rviz" name="rviz" args="-d $(find robot)/config/robot.rviz"/>
+    <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" output="screen" />
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen" /> -->
+
+</launch>

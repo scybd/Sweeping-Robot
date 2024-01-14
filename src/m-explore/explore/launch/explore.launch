@@ -1,0 +1,15 @@
+<launch>
+<node pkg="explore_lite" type="explore" respawn="false" name="explore" output="screen">
+  <param name="robot_base_frame" value="base_footprint"/>   <!--机器人底盘坐标系-->
+  <param name="costmap_topic" value="map"/>                 <!--地图主题-->
+  <param name="costmap_updates_topic" value="map_updates"/> <!--地图更新，如果地图来源始终发布完整更新，即不提供此主题，则不需要-->
+  <param name="visualize" value="true"/>                    <!--指定是否发布可视化边界-->
+  <param name="planner_frequency" value="0.33"/>            <!--计算新边界并重新考虑目标的速率(Hz)-->
+  <param name="progress_timeout" value="20.0"/>             <!--时间以秒为单位，当机器人在 progress_timeout 内没有任何进展时，将放弃当前目标-->
+  <param name="potential_scale" value="3.0"/>               <!--用于加权边界,这个乘法参数影响边界权重的边界潜在分量（到边界的距离）-->
+  <param name="orientation_scale" value="0.0"/>             <!--用于加权边界，该乘法参数影响前沿权重的前沿方向分量，此参数当前不执行任何操作，仅提供前向兼容性-->
+  <param name="gain_scale" value="1.0"/>                    <!--用于加权边界。，乘法参数影响边界权重（边界大小）的边界增益分量-->
+  <param name="transform_tolerance" value="0.3"/>           <!--变换机器人姿势时使用的变换容差-->
+  <param name="min_frontier_size" value="0.75"/>            <!--将边界视为探索目标的最小边界大小。以米为单位-->
+</node>
+</launch>

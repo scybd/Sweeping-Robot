@@ -1,0 +1,24 @@
+<launch>
+  <include file="$(find robot)/launch/robot.launch"/>
+
+  <!-- 加载全局地图 -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find auto_nav)/map/home_map.yaml"/>
+  <!-- AMCL -->
+  <include file="$(find auto_nav)/launch/amcl.launch" />
+  <!-- 运行move_base节点 -->
+  <include file="$(find auto_nav)/launch/move.launch" />
+
+    <!-- 路径规划器 -->
+    <node pkg="auto_nav" type="path_planning" respawn="false" name="path_planning" output="screen" clear_params="true">
+        <rosparam file="$(find auto_nav)/config/costmap_common_params.yaml" command="load" ns="cleaning_costmap" />
+        <rosparam file="$(find auto_nav)/config/cleaning_costmap_params.yaml" command="load" />
+    </node>
+  
+  <param name="/NextGoal/tolerance_goal" value="0.3" />
+  <node pkg="auto_nav" type="next_goal" respawn="true" name="next_goal" output="screen" />
+  
+  <node pkg="joint_state_publisher" name="joint_state_publisher" type="joint_state_publisher" />
+  <node pkg="robot_state_publisher" name="robot_state_publisher" type="robot_state_publisher" />
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find auto_nav)/rviz/clean_work.rviz" />
+
+</launch>

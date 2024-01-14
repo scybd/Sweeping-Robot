@@ -1,0 +1,13 @@
+<!-- 组合底盘、摄像头和雷达 -->
+<robot name="my_car_camera" xmlns:xacro="http://wiki.ros.org/xacro">
+    <!-- 包含惯性矩阵计算的头文件 -->
+    <xacro:include filename="head.xacro" />
+
+    <!-- 小车组件 -->
+    <xacro:include filename="car_base.xacro" />
+    <xacro:include filename="car_camera.xacro" />
+    <xacro:include filename="car_laser.xacro" />
+
+    <!-- 小车运动控制 -->
+    <xacro:include filename="car_move.xacro" />
+</robot>
