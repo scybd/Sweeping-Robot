@@ -1,7 +1,6 @@
 # Simulation of Sweeping Robot in ROS(Noetic)
 - ![cover](./img/cover.png)
 - [demo video](https://www.bilibili.com/video/BV1Fe41117gR/?share_source=copy_web&vd_source=e67cc43f2e8443b722a5f50ef79db03e)
-- Note that this warehouse stores my professional elective course codes, which have low originality but detailed annotations(注意，本仓库存放的是我的专业选修课代码，原创性较低但注释详细)
 
 ## English
 ### Package Description
